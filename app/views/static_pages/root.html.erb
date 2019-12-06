@@ -30,48 +30,30 @@
                 <%= image_tag("redfox.jpg", :alt => "redfox") %>
             </div>
 
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+           
 
         </div>
         
         <br>
 
-        <div style="text-align:center">
-            <span class="dot" onclick="currentSlide(1)"></span> 
-            <span class="dot" onclick="currentSlide(2)"></span> 
-            <span class="dot" onclick="currentSlide(3)"></span> 
-        </div>
+        
         
         <script>
-            var slideIndex = 1;
-            showSlides(slideIndex);
+            // Automatic Slideshow function
+            var autoSlideIndex = 0;
             
-            function plusSlides(n) {
-                showSlides(slideIndex += n);
-            }
-
-            function currentSlide(n) {
-                showSlides(slideIndex = n);
-            }
-
-            function showSlides(n) {
+            showSlides();
+            function showSlides() {
                 var i;
-                var slides = document.getElementsByClassName("slides");
-                var dots = document.getElementsByClassName("dot");
-
-                if (n > slides.length) {slideIndex = 1};
-                if (n < 1) {slideIndex = slides.length};
-                for (let i = 0; i < slides.length; i++) {
-                    slides[i].style.display = "none";
+                var autoSlides = document.getElementsByClassName("slides");
+                for (let i = 0; i < autoSlides.length; i++) {
+                    autoSlides[i].style.display = "none";
                 }
-                for (let i = 0; i < dots.length; i++) {
-                    dots[i].className = dots[i].className.replace(" active", "");
-                }
-                slides[slideIndex-1].style.display = "block";
-                dots[slideIndex-1].className += " active";
+                autoSlideIndex++;
+                if (autoSlideIndex > autoSlides.length) {autoSlideIndex = 1}
+                autoSlides[autoSlideIndex - 1].style.display = "block";
+                setTimeout(showSlides, 2000); 
             }
-
         </script>
 
     </div>
