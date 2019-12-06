@@ -89,3 +89,7 @@
     from {opacity: .4}
     to {opacity: 1}
   }
+
+.img-slideshow img {
+    width: 100%;
+}
