@@ -1,17 +1,23 @@
 <div>
 <div class="main-navbar">
+    <div class="inner-main-navbar">
     <% if logged_in? %>
         <%= current_user.username %>
         <form action="<%= session_url %>" method="post">
             <%= auth_token_input %>
-            <input type="hidden" name="_method" value="delete">
-            <input type="submit" value="Sign Out">
+            <input type="hidden" name="_method" value="delete" class="">
+            <input type="submit" value="Sign Out" class="main-nav-button"/>
         </form>
         <% else%>
-        <a href="<%= new_session_url %>">Sign In</a>
-        <a href="<%= new_user_url %>">Sign Up</a>
+        <a href="<%= new_session_url %>" class="main-nav-button">Sign In</a>
+        <a href="<%= new_user_url %>" class="main-nav-button">Sign Up</a>
     <% end %>
+    </div>
 </div>
+    <div class="main-body">
+        <div class="main-title-box">
+            <div class="main-title"><h1 >Animal Book</h1></div>
+        </div>
 
-<h1>THIS IS THE MAIN PAGE</h1>
+    </div>
 </div>
