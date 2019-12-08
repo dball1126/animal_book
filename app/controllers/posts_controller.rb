@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    skip_before_action :verify_authenticity_token
+    # skip_before_action :verify_authenticity_token
 
     def new
         @post = Post.new
@@ -18,7 +18,10 @@ class PostsController < ApplicationController
         if @post.save
             redirect_to user_posts_url
         else
-            render json: @post.errors.full_messages, status: 422
+
+            current_user.errors.add(:body, "Body Cannot be empty")
+            render :index
+             
         end
 
     end
