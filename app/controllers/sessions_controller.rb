@@ -7,7 +7,8 @@ class SessionsController < ApplicationController
                                          params[:user][:password])
         if @user
             login!(@user)
-            redirect_to root_url
+           
+            redirect_to user_posts_url(@user)
         else 
             render json: ["Invalid credentials"], status: 401
         end

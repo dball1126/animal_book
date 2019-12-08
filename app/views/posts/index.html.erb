@@ -1,0 +1,17 @@
+<div class="user-posts">
+
+<h2><%= current_user.username %>'s POSTS</h2>
+    <%= auth_token_input %>
+
+    <form action="<%= user_posts_url %>" method="POST" id="post-form">
+        <h5>Create New Post</h5>
+            <textarea value="post[body]" rows="5" cols="30"> </textarea>
+                
+        
+        <input type="submit" value="Create Post">
+    </form>
+    <% current_user.posts.each do |post| %>
+        <h4><%= post.body %></h4>
+    <% end %>
+</div>
+
