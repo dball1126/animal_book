@@ -5,12 +5,12 @@
     
 
     <form action="<%= user_posts_url %>" method="POST" id="post-form">
-    <%= auth_token_input %>
-        
+        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">        
         <h5>Create New Post</h5>
         <%  if !current_user.errors.empty? %>
             <% current_user.errors.messages.each do |k, e|%>
-                <div class="error-div"><h1><%= e[0] %></h1></div>
+                <div class="error-div"><h1><%= e[0] %></h1>
+                </div>
             <%  end %>
         <%  end %>
             <textarea name="post[body]" rows="5" cols="30"> </textarea>
@@ -20,7 +20,18 @@
     </form>
     <% current_user.posts.each do |post| %>
         <h4><%= post.body %></h4>
+        <form action="<%= post_url(post) %>" method="post">
+            <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" name="" value="Remove post">
+        </form>
+       <a href="<%= edit_post_url(post) %>">Edit post</a> 
+
     <% end %>
   
+
+    <script>
+
+    </script>
 </div>
 
