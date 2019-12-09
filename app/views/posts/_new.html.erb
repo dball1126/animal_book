@@ -1,0 +1,13 @@
+<%  if !current_user.errors.empty? %>
+    <% current_user.errors.messages.each do |k, e|%>
+        <div class="error-div"><h1><%= e[0] %></h1></div>
+    <%  end %>
+<%  end %>
+
+<form action="<%= user_posts_url %>" method="POST" id="post-form">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <h5>Create Your Post</h5>
+            <textarea name="post[body]" rows="5" cols="30"> </textarea>
+                
+    <input type="submit" value="Create Post">
+</form>
